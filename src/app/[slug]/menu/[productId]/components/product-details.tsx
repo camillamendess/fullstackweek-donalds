@@ -91,7 +91,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </div>
           </div>
 
-          <ScrollArea className="h-full">
+          <ScrollArea className="h-full mb-10">
             {/* SOBRE */}
             <div className="mt-6 space-y-3">
               <h4 className="font-semibold">Sobre</h4>
@@ -114,10 +114,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </div>
           </ScrollArea>
         </div>
-
-        <Button className="w-full rounded-full" onClick={handleAddToCart}>
-          Adicionar à sacola
-        </Button>
+        <div className="flex justify-center">
+          <Button className="fixed bottom-2 w-[95%] rounded-full" onClick={handleAddToCart}>
+            Adicionar à sacola
+          </Button>
+        </div>
       </div>
       <CartSheet />
     </>
