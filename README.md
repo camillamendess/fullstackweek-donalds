@@ -17,3 +17,6 @@ Seleção de produtos: O usuário pode escolher produtos do cardápio e especifi
 Carrinho de compras: O projeto utiliza Context API para gerenciar o carrinho, permitindo ao usuário visualizar e modificar os itens antes de finalizar a compra.
 Registro de pedidos: Ao finalizar a compra, um pedido é registrado no banco de dados utilizando o CPF do usuário como identificador.
 Visualização de pedidos: O usuário pode visualizar seus pedidos passados por meio do cpf.
+
+![Capa](Capa.png)
+
