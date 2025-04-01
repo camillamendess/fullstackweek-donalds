@@ -13,6 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  cpf       String   @unique
+  orders    Order[]
+  cards     Card[] // Relacionamento com cartões de crédito
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Restaurant {
   id             String         @id @default(uuid())
   name           String
@@ -63,6 +75,8 @@ model Order {
   OrderProducts    OrderProduct[]
   customerName     String
   customerCpf      String
+  customer         Customer?        @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  customerId       String?
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 }
@@ -77,6 +91,18 @@ model OrderProduct {
   price     Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Card {
+  id         String   @id @default(uuid())
+  number     String // Armazenar parcialmente para segurança
+  lastFour   String // Apenas os últimos 4 dígitos
+  brand      String // Visa, Mastercard, etc.
+  expMonth   Int
+  expYear    Int
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String
+  createdAt  DateTime @default(now())
 }
 
 enum OrderStatus {
